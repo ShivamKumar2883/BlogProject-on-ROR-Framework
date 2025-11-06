@@ -53,6 +53,20 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
+gem "rails_stdout_logging" # Ensures proper logging on Railway
+gem "net-smtp" # Required for Action Mailer in Rails 8
+
+group :production do
+  # These help with asset compilation and serving
+  gem "rails_12factor"
+end
+
+group :development, :test do
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
+end
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
