@@ -5,8 +5,13 @@
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header font-italic">
           by <%= @article.user.username if @article.user%>
-          <%= link_to gravatar_for(@article.user), user_path(@article.user)%>
         </div>
+        <% if @article.image.attached? %>
+          <div class="card-img-top">
+            <%= image_tag @article.image, class: "img-fluid", 
+            style: "max-height: 400px; width: 100%; object-fit: cover;" %>
+          </div>
+        <% end %>
         <div class="card-body">
           <div class="card-text text-left"><%= simple_format(@article.description) %></div>
           <% if logged_in? && (@article.user == current_user || current_user.admin?)  %>

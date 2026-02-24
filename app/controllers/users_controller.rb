@@ -60,11 +60,11 @@ class UsersController < ApplicationController
         end
     end
     redirect_back fallback_location: root_path, alert: "No results found."
-    end
+  end
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :avatar)
   end
 
   def set_user
